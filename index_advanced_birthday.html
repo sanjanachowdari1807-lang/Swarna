@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Swarna</title>
+<style>
+body{margin:0;font-family:Arial;background:linear-gradient(#ffd6e8,#fff0f6);overflow-x:hidden}
+.wrap{max-width:850px;margin:30px auto;background:#fff;padding:25px;border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.15)}
+h1,h2{text-align:center;color:#e91e63}
+label{display:block;margin-top:16px;font-weight:bold}
+textarea,input{width:100%;padding:10px;border-radius:10px;border:1px solid #ccc}
+button{margin:20px auto;display:block;padding:14px 24px;border:none;border-radius:25px;background:#e91e63;color:#fff;font-size:18px}
+button:disabled{background:#bbb}
+#letter{display:none;animation:fade .8s}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
+.heart,.balloon{position:fixed;pointer-events:none}
+</style></head><body>
+<div class="wrap">
+<h1>💖 An Early Birthday Surprise for Swarna ❤️</h1>
+<div class="questions">
+<h2>Before You Unlock Your Surprise 💌</h2>
+<p>Answer these from your heart.</p>
+<label>1. What's your favorite childhood memory of us?</label><textarea oninput="check()"></textarea>
+<label>2. Describe our friendship in one word.</label><input oninput="check()">
+<label>3. What's the funniest thing we've ever done together?</label><textarea oninput="check()"></textarea>
+<label>4. If we could relive one day together, which one?</label><textarea oninput="check()"></textarea>
+<label>5. What's one thing you'll always remember about me?</label><textarea oninput="check()"></textarea>
+<label>6. Are you ready to read your birthday letter?</label><input placeholder="Type YES ❤️" oninput="check()">
+<button id="b" disabled onclick="openLetter()">🎁 Open My Birthday Letter</button>
+</div>
+<div id="letter">
+<h2>💖 To My Dearest Swarna 💖</h2>
+<p>Your birthday hasn't arrived yet, but I couldn't wait to remind you how special you are, <b>Swarna</b>. From our childhood days when we were supposed to study but ended up gossiping, to dancing on the terrace like we owned the world, every memory with you is priceless. Thank you for always being by my side. You are more than my best friend—you are family. I love everything about you: your smile, your kindness, your caring heart, and the happiness you bring into my life. I hope this birthday brings you endless joy, success, good health, beautiful memories, and every dream you've wished for. No matter where life takes us, you'll always be my childhood partner in crime, my terrace dance partner, and my forever best friend. When 24th October finally arrives, I hope your day is filled with love, laughter, and everything you've wished for. Consider this a little early surprise because some people are simply too special to wait for. ❤️🎂</p>
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+function check(){let ok=true;document.querySelectorAll("textarea,input").forEach(e=>{if(!e.value.trim())ok=false});b.disabled=!ok}
+function heart(){let h=document.createElement('div');h.className='heart';h.innerHTML='💖';h.style.left=Math.random()*100+'vw';h.style.top='-20px';h.style.fontSize=(18+Math.random()*20)+'px';document.body.appendChild(h);let y=-20;let t=setInterval(()=>{y+=3;h.style.top=y+'px';if(y>innerHeight){clearInterval(t);h.remove()}},30)}
+function balloon(){let b=document.createElement('div');b.className='balloon';b.innerHTML='🎈';b.style.left=Math.random()*100+'vw';b.style.bottom='-30px';b.style.fontSize='32px';document.body.appendChild(b);let y=-30;let t=setInterval(()=>{y+=2;b.style.bottom=y+'px';if(y>innerHeight+40){clearInterval(t);b.remove()}},30)}
+function openLetter(){document.querySelector('.questions').style.display='none';letter.style.display='block';confetti({particleCount:250,spread:180});setInterval(heart,300);setInterval(balloon,700);}
+</script></body></html>
